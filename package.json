@@ -5,7 +5,9 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.32.2"
   },
   "devDependencies": {},
   "scripts": {
