@@ -12,7 +12,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Middleware: Public Folder
-app.use(express.static("app/public"));
+app.use(express.static(__dirname + '/public'));
+
+// Middleware: PUG Templating engine
+app.set('view engine', 'pug');
 
 // Handling Routes
 app.use("/", mainRoutes);
