@@ -1,14 +1,34 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+  *:focus, *:active {
+    outline: none !important; }
 
 .main {
-    margin: 4em auto 0 auto;
-    width: 70%;
-    height: auto;
-    padding: 1em 4em 1em;
-}
-
-.main input {
+  margin: 4em auto 0 auto;
+  width: 70%;
+  height: auto;
+  padding: 1em 4em 1em; }
+  .main input {
     border: 3px solid #cecece;
     border-radius: 25px;
-    padding: 0.6em;
-}
+    padding: 0.6em; }
 
+.overlay {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  padding-top: 10em; }
+  .overlay .signup {
+    background-color: #FFF;
+    padding: 3em 7em;
+    margin: 0 auto;
+    width: 50%; }
+    .overlay .signup h2 {
+      color: #16a2b8; }
+    .overlay .signup input {
+      border: 5px solid #F8F9Fa; }

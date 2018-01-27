@@ -1,0 +1,52 @@
+@import "variables";
+@import "mixins";
+*{
+    box-sizing: border-box;
+    
+    &:focus,
+    &:active {
+        outline: none !important;
+    }
+}
+.main {
+    margin: 4em auto 0 auto;
+    width: 70%;
+    height: auto;
+    padding: 1em 4em 1em;
+
+    input {
+        border: 3px solid #cecece;
+        border-radius: 25px;
+        padding: 0.6em;
+    }
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    //display: none;
+    text-align: center;
+    padding-top: 10em;
+
+        .signup {
+        //.login,
+        //.createEvent {
+        //.joinEvent {
+            @include overlay;
+
+            h2 {
+                color: $aqua;
+            }
+            input {
+                border: 5px solid $gray;
+            }
+    }
+}
+
+
+
+
