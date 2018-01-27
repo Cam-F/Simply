@@ -23,7 +23,11 @@
   left: 0;
   display: none;
   text-align: center;
-  padding-top: 10em; }
+  padding-top: 10em;
+  opacity: 0;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear; }
   .overlay h2 {
     color: #16a2b8; }
   .overlay input {
@@ -39,7 +43,34 @@
     margin: 0 auto;
     width: 50%;
     z-index: 2;
-    display: none; }
+    display: none;
+    opacity: 1; }
 
 .open {
   display: block !important; }
+
+.container-fluid {
+  margin-top: 4em; }
+
+.sidebar {
+  padding: 0;
+  margin: 0;
+  -webkit-box-shadow: 1px 1px 1px #222;
+  box-shadow: 1px 1px 1px #222; }
+  .sidebar ul {
+    list-style: none; }
+  .sidebar .icon {
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: inline-block; }
+  .sidebar .icon-name {
+    background: url("../imgs/zap.svg") center no-repeat; }
+
+@media (max-width: 768px) {
+  .overlay .signup,
+  .overlay .login,
+  .overlay .createEvent,
+  .overlay .joinEvent {
+    width: 100%;
+    padding: 3em 2em; } }

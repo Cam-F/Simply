@@ -5,3 +5,17 @@
     width: 50%;
     z-index: 2;
 }
+
+@mixin md {
+    @media (max-width: $screen-sm) {
+        .overlay {
+            .signup,
+            .login,
+            .createEvent, 
+            .joinEvent {
+                width: 100%;
+                padding: 3em 2em;
+            }
+        }
+    }
+}
