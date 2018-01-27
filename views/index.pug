@@ -11,35 +11,35 @@ block content
             form(action="" method="")
                 .form-group.row
                     label.sr-only(for="email")  Email
-                    input.form-control#email(type="email" placeholder="Email")
+                    input.form-control(type="email" placeholder="Email" name="email")
                 .form-group.row
                     label.sr-only(for="username")   Username
-                    input.form-control#username(type="text" placeholder="Username")
+                    input.form-control(type="text" placeholder="Username" name="username")
                 .form-group.row
                     label.sr-only(for="password")   Password
-                    input.form-control#password(type="password" placeholder="Password")
+                    input.form-control(type="password" placeholder="Password" name="password")
                 button.btn.btn-outline-info(type="submit") Register
         .login
             h2 Login
             form(action="" method="")
                 .form-group.row
                     label.sr-only(for="email")  Email
-                    input.form-control#email(type="email" placeholder="Email")
+                    input.form-control(type="email" placeholder="Email" name="email")
                 .form-group.row
                     label.sr-only(for="password")   Password
-                    input.form-control#password(type="password" placeholder="Password")
+                    input.form-control(type="password" placeholder="Password" name="password")
                 button.btn.btn-outline-info(type="submit") Log in
         .createEvent
             h2 Create new event
             form(action="" method="")
                 .form-group.row
                     label.sr-only(for="newEventName")  New Event Name
-                    input.form-control#newEventName(type="email" placeholder="Name of your new event")
+                    input.form-control(type="email" placeholder="Name of your new event" name="newEventName")
                 .form-group.row
                     label.sr-only(for="newEventType")   Type of Event
-                    input.form-control#newEventType(type="text" placeholder="The type of event you're hosting")
+                    input.form-control(type="text" placeholder="The type of event you're hosting" name="newEventType")
                 .form-group.row
                     label.sr-only(for="newEventCode")   Create a code 4 digit code
-                    input.form-control#newEventCode(type="number" placeholder="Create a 4 digit code for your guests to find you")
+                    input.form-control(type="number" placeholder="Create a 4 digit code for your guests to find you" name="newEventCode")
                 button.btn.btn-outline-info(type="submit") Create Event
         .joinEvent

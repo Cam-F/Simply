@@ -28,24 +28,32 @@
     position: absolute;
     top: 0;
     left: 0;
-    //display: none;
+    display: none;
     text-align: center;
     padding-top: 10em;
 
-        .signup {
-        //.login,
-        //.createEvent {
-        //.joinEvent {
-            @include overlay;
-
-            h2 {
-                color: $aqua;
-            }
-            input {
-                border: 5px solid $gray;
-            }
+        h2 {
+            color: $aqua;
+        }
+        input {
+            border: 5px solid $gray;
+        }
+        .open{
+            display: block;
+        }
+        .signup,
+        .login,
+        .createEvent, 
+        .joinEvent {
+            @include overlay-items;
+            display: none;
     }
 }
+
+.open{
+    display: block !important;
+}
+
 
 
 

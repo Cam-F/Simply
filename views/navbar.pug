@@ -7,14 +7,14 @@ nav.navbar.navbar-expand-md.navbar-light.fixed-top.bg-light.d-flex.justify-conte
             #navbarCollapse.collapse.navbar-collapse.text-right
                 ul.navbar-nav.mr-auto
                     li.nav-item
-                        a.nav-link(href='/signup') Register
+                        a#nav-register.nav-link(data-section="signup") Register
                     li.nav-item
-                        a.nav-link(href='/login') Sign in
+                        a#nav-signin.nav-link(data-section="login") Sign in
                     li.nav-item
-                        a.nav-link(href='/events') View Data
+                        a#nav-viewData.nav-link(href='/events') View Data
                     li.nav-item
-                        a.nav-link(href='/create') Create Event
+                        a#nav-createEvent.nav-link(data-section="createEvent") Create Event
                     li.nav-item
-                        a.nav-link(href='/join') Join Event
+                        a#nav-joinEvent.nav-link(data-section="joinEvent") Join Event
                     li.nav-item
                         a.nav-link(href='/user') Dashboard

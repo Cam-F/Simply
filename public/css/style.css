@@ -21,14 +21,24 @@
   position: absolute;
   top: 0;
   left: 0;
+  display: none;
   text-align: center;
   padding-top: 10em; }
-  .overlay .signup {
+  .overlay h2 {
+    color: #16a2b8; }
+  .overlay input {
+    border: 5px solid #F8F9Fa; }
+  .overlay .open {
+    display: block; }
+  .overlay .signup,
+  .overlay .login,
+  .overlay .createEvent,
+  .overlay .joinEvent {
     background-color: #FFF;
     padding: 3em 7em;
     margin: 0 auto;
-    width: 50%; }
-    .overlay .signup h2 {
-      color: #16a2b8; }
-    .overlay .signup input {
-      border: 5px solid #F8F9Fa; }
+    width: 50%;
+    display: none; }
+
+.open {
+  display: block !important; }
