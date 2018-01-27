@@ -13,13 +13,17 @@
                 this.$nav_viewData_btn = $('#nav-viewData');
                 this.$nav_createEvent_btn = $('#nav-createEvent');
                 this.$nav_joinEvent_btn = $('#nav-joinEvent');
+                this.$btn_signup = $('#btn-signup');
+                this.$sections_wrapper = $('#sections-wrapper');
             },
             eventBinding () {
                 this.$nav_register_btn.on('click', this.overlayOpen.bind(this));
                 this.$nav_signin_btn.on('click', this.overlayOpen.bind(this));
                 this.$nav_createEvent_btn.on('click', this.overlayOpen.bind(this));
                 this.$nav_joinEvent_btn.on('click', this.overlayOpen.bind(this));
+                this.$btn_signup.on('click', this.overlayOpen.bind(this));
                 this.$overlay.on('click', this.closeOverlay);
+                this.$overlay.on('click', '.sections-wrapper', e => { e.stopPropagation()});
             },
             overlayOpen (e) {   // Function to open the overlay and display signup, login, createevent, joinevent sections             
                 // Remove previous section if there's one

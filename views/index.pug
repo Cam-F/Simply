@@ -4,9 +4,9 @@ block content
     .main
         h1  Welcome
         p   A simple web tool for event planning
-        button.btn.btn-outline-info(type="button") Sign up
+        button#btn-signup.btn.btn-outline-info(type="button" data-section="signup") Sign up
     .overlay
-        .signup
+        .signup.sections-wrapper
             h2 Sign Up
             form(action="" method="")
                 .form-group.row
@@ -19,7 +19,7 @@ block content
                     label.sr-only(for="password")   Password
                     input.form-control(type="password" placeholder="Password" name="password")
                 button.btn.btn-outline-info(type="submit") Register
-        .login
+        .login.sections-wrapper
             h2 Login
             form(action="" method="")
                 .form-group.row
@@ -29,7 +29,7 @@ block content
                     label.sr-only(for="password")   Password
                     input.form-control(type="password" placeholder="Password" name="password")
                 button.btn.btn-outline-info(type="submit") Log in
-        .createEvent
+        .createEvent.sections-wrapper
             h2 Create new event
             form(action="" method="")
                 .form-group.row
@@ -42,7 +42,7 @@ block content
                     label.sr-only(for="newEventCode")   Create a code 4 digit code
                     input.form-control(type="number" placeholder="Create a 4 digit code for your guests to find you" name="newEventCode")
                 button.btn.btn-outline-info(type="submit") Create Event
-        .joinEvent
+        .joinEvent.sections-wrapper
             h2 Join event
             form(action="" method="")
                 .form-group.row
