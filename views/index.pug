@@ -34,7 +34,7 @@ block content
             form(action="" method="")
                 .form-group.row
                     label.sr-only(for="newEventName")  New Event Name
-                    input.form-control(type="email" placeholder="Name of your new event" name="newEventName")
+                    input.form-control(type="text" placeholder="Name of your new event" name="newEventName")
                 .form-group.row
                     label.sr-only(for="newEventType")   Type of Event
                     input.form-control(type="text" placeholder="The type of event you're hosting" name="newEventType")
@@ -43,3 +43,9 @@ block content
                     input.form-control(type="number" placeholder="Create a 4 digit code for your guests to find you" name="newEventCode")
                 button.btn.btn-outline-info(type="submit") Create Event
         .joinEvent
+            h2 Join event
+            form(action="" method="")
+                .form-group.row
+                    label.sr-only(for="newEventName")  Event Code
+                    input.form-control(type="number" placeholder="Type the code for the event" name="newEventName")
+                button.btn.btn-outline-info(type="submit") Join Event
