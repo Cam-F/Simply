@@ -7,7 +7,7 @@
 }
 
 @mixin md {
-    @media (max-width: $screen-sm) {
+    @media (max-width: $screen-md) {
         .overlay {
             .signup,
             .login,
@@ -19,3 +19,12 @@
         }
     }
 }
+
+@mixin lg {
+    @media(min-width: $screen-lg) {
+        .sidebar {
+            height: 100vh;
+        }
+    }
+}
+

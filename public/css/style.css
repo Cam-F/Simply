@@ -29,9 +29,9 @@
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear; }
   .overlay h2 {
-    color: #16a2b8; }
+    color: #16A2B8; }
   .overlay input {
-    border: 5px solid #F8F9Fa; }
+    border: 5px solid #F8F9FA; }
   .overlay .open {
     display: block; }
   .overlay .signup,
@@ -50,22 +50,30 @@
   display: block !important; }
 
 .container-fluid {
-  margin-top: 4em; }
+  margin-top: 3.5em; }
 
 .sidebar {
   padding: 0;
   margin: 0;
-  -webkit-box-shadow: 1px 1px 1px #222;
-  box-shadow: 1px 1px 1px #222; }
+  -webkit-box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.4);
+  background-color: #8860D0;
+  color: #FFF; }
+  .sidebar .profile-img {
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    padding: 0;
+    background: url("../imgs/user.png") center no-repeat;
+    background-size: contain;
+    border: 1px solid #FFF;
+    margin: 2em auto; }
   .sidebar ul {
     list-style: none; }
-  .sidebar .icon {
-    width: 25px;
-    height: 25px;
-    padding: 0;
-    display: inline-block; }
-  .sidebar .icon-name {
-    background: url("../imgs/zap.svg") center no-repeat; }
+    .sidebar ul .icon {
+      width: 40px; }
+    .sidebar ul li {
+      padding: 0.5em 0; }
 
 @media (max-width: 768px) {
   .overlay .signup,
@@ -74,3 +82,7 @@
   .overlay .joinEvent {
     width: 100%;
     padding: 3em 2em; } }
+
+@media (min-width: 992px) {
+  .sidebar {
+    height: 100vh; } }
