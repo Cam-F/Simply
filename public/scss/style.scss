@@ -31,7 +31,6 @@
     display: none;
     text-align: center;
     padding-top: 10em;
-    opacity: 0;
     transition: all 0.3s linear;
 
 
@@ -50,7 +49,6 @@
         .joinEvent {
             @include overlay-items;
             display: none;
-            opacity: 1;
         }
 
 }

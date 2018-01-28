@@ -20,5 +20,11 @@ app.set('view engine', 'pug');
 // Handling Routes
 app.use("/", mainRoutes);
 
+// Creating an error handler
+app.use( (err, req, res, next) => { // If an error has been passed from a middleware this error handler will catch it
+    res.locals.err = err;
+    res.render('error');
+})
+
 // Start Server
 app.listen(3000, () => console.log('Example app listening on port 3000!'));

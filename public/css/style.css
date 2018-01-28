@@ -24,7 +24,6 @@
   display: none;
   text-align: center;
   padding-top: 10em;
-  opacity: 0;
   -webkit-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear; }
@@ -43,8 +42,7 @@
     margin: 0 auto;
     width: 50%;
     z-index: 2;
-    display: none;
-    opacity: 1; }
+    display: none; }
 
 .open {
   display: block !important; }

@@ -8,7 +8,7 @@ block content
     .overlay
         .signup.sections-wrapper
             h2 Sign Up
-            form(action="/" method="")
+            form(action="/register" method="POST")
                 .form-group.row
                     label.sr-only(for="email")  Email
                     input.form-control(type="email" placeholder="Email" name="email")
@@ -18,6 +18,9 @@ block content
                 .form-group.row
                     label.sr-only(for="password")   Password
                     input.form-control(type="password" placeholder="Password" name="password")
+                .form-group.row
+                    label.sr-only(for="confirmPassword")   Confirm Password
+                    input.form-control(type="password" placeholder="Confirm Password" name="confirmPassword")
                 button.btn.btn-outline-info(type="submit") Register
         .login.sections-wrapper
             h2 Login

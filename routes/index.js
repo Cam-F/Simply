@@ -7,9 +7,37 @@ router.get('/', (req, res) => {
     res.render("index");
 });
 
-// GET "/signup": User signs up
-router.get('/signup', (req, res) => {
-    res.render("register");
+// POST "/signup": User signs up
+router.post('/register', (req, res, next) => {
+    if (req.body.email &&
+        req.body.username &&
+        req.body.password &&
+        req.body.confirmPassword) {
+            // All fields filled 
+            // Check if matching password
+            if (req.body.passwor !== req.body.confirmPassword) {
+                let err = new Error("Password do not match");
+                err.status = 400;
+                next(err);
+            } 
+            // If they match
+            const newUser = {
+                username: req.body.username,
+                email: req.body.email,
+                password: req.body.password 
+            };
+
+            // CREATE USER IN DB
+        }
+    else {
+        // If a field is blank
+        let err = new Error("All fields are required");
+        err.status = 400;
+        next(err);
+    }
+
+    console.log(req.body);
+    res.end();
 });
 
 // GET "/login": User logs in
