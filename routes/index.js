@@ -15,7 +15,7 @@ router.post('/register', (req, res, next) => {
         req.body.confirmPassword) {
             // All fields filled 
             // Check if matching password
-            if (req.body.passwor !== req.body.confirmPassword) {
+            if (req.body.password !== req.body.confirmPassword) {
                 let err = new Error("Password do not match");
                 err.status = 400;
                 next(err);
