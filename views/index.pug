@@ -24,7 +24,7 @@ block content
                 button.btn.btn-outline-info(type="submit") Register
         .login.sections-wrapper
             h2 Login
-            form(action="" method="")
+            form(action="/login" method="POST")
                 .form-group.row
                     label.sr-only(for="email")  Email
                     input.form-control(type="email" placeholder="Email" name="email")
@@ -34,7 +34,7 @@ block content
                 button.btn.btn-outline-info(type="submit") Log in
         .createEvent.sections-wrapper
             h2 Create new event
-            form(action="" method="")
+            form(action="/createEvents" method="POST")
                 .form-group.row
                     label.sr-only(for="newEventName")  New Event Name
                     input.form-control(type="text" placeholder="Name of your new event" name="newEventName")
@@ -47,7 +47,7 @@ block content
                 button.btn.btn-outline-info(type="submit") Create Event
         .joinEvent.sections-wrapper
             h2 Join event
-            form(action="" method="")
+            form(action="joinEvents" method="POST")
                 .form-group.row
                     label.sr-only(for="newEventName")  Event Code
                     input.form-control(type="number" placeholder="Type the code for the event" name="newEventName")
