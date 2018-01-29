@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    .main
+        h1.text-center Events
+    .container
+        .form-group.row
+                label.sr-only(for="confirmPassword")   Confirm Password
+                input.form-control(type="password" placeholder="Confirm Password" name="confirmPassword")
+            button.btn.btn-outline-info(type="submit") Register
+        table.table.table-striped
+            thead
+                tr
+                    th ID
+                    th Name
+                    th Type
+                    th City
+                    th State
+            tbody
+            each val in user
+                tr
+                    th(scope='row') #{val.id}
+                    td #{val.name}
+                    td #{val.type}
+                    td #{val.city}
+                    td #{val.state}
+ 
+

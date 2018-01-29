@@ -7,6 +7,42 @@ router.get('/', (req, res) => {
     res.render("index");
 });
 
+router.get('/events', (req, res) => {
+    const user = [
+        {
+            id: 123,
+            name: "Jean Paul",
+            type: "BBQ",
+            city: "Orlando",
+            state: "FL"
+        },
+        {
+            id: 456,
+            name: "Madison",
+            type: "BBQ",
+            city: "Orlando",
+            state: "FL"
+        },
+        {
+            id: 789,
+            name: "Harmin",
+            type: "Wedding",
+            city: "Sanford",
+            state: "FL"
+        },
+        {
+            id: 645,
+            name: "Cameron",
+            type: "Birthday",
+            city: "Melbourne",
+            state: "FL"
+        }
+    ]
+
+    res.render("events2", { user });
+
+});
+
 // POST "/signup": User signs up
 router.post('/register', (req, res, next) => {
     if (req.body.email &&
@@ -32,7 +68,7 @@ router.post('/register', (req, res, next) => {
                 // store user's ID from DB into the sesssion (so user is immediately logged in)
                 req.session.userId = user._id;
                 res.redirect('/user');
-        }
+    }
     else {
         // If a field is blank
         let err = new Error("All fields are required");
@@ -117,6 +153,7 @@ router.post('/joinEvents', (req, res, next) => {
     }
 });
 
+// GET "/user": Dashboard
 router.get('/user', (req, res) => {
     res.render("user"); // Pass all data needed
 });
