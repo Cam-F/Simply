@@ -1,0 +1,86 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+  *:focus, *:active {
+    outline: none !important; }
+
+.main {
+  margin: 4em auto 0 auto;
+  width: 70%;
+  height: auto;
+  padding: 1em 4em 1em; }
+  .main input {
+    border: 3px solid #cecece;
+    border-radius: 25px;
+    padding: 0.6em; }
+
+.overlay {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  text-align: center;
+  padding-top: 10em;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear; }
+  .overlay h2 {
+    color: #16A2B8; }
+  .overlay input {
+    border: 5px solid #F8F9FA; }
+  .overlay .open {
+    display: block; }
+  .overlay .signup,
+  .overlay .login,
+  .overlay .createEvent,
+  .overlay .joinEvent {
+    background-color: #FFF;
+    padding: 3em 7em;
+    margin: 0 auto;
+    width: 50%;
+    z-index: 2;
+    display: none; }
+
+.open {
+  display: block !important; }
+
+.container-fluid {
+  margin-top: 3.5em; }
+
+.sidebar {
+  padding: 0;
+  margin: 0;
+  -webkit-box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.4);
+  background-color: #8860D0;
+  color: #FFF; }
+  .sidebar .profile-img {
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    padding: 0;
+    background: url("../imgs/user.png") center no-repeat;
+    background-size: contain;
+    border: 1px solid #FFF;
+    margin: 2em auto; }
+  .sidebar ul {
+    list-style: none; }
+    .sidebar ul .icon {
+      width: 40px; }
+    .sidebar ul li {
+      padding: 0.5em 0; }
+
+@media (max-width: 768px) {
+  .overlay .signup,
+  .overlay .login,
+  .overlay .createEvent,
+  .overlay .joinEvent {
+    width: 100%;
+    padding: 3em 2em; } }
+
+@media (min-width: 992px) {
+  .sidebar {
+    height: 100vh; } }
