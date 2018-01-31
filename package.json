@@ -1,35 +1,38 @@
 {
-  "name": "simply",
+  "name": "node-express-sequelize-eventplanning",
   "version": "1.0.0",
-  "description": "Event planning app",
+  "description": "Event Planning Full Stack Web App",
   "main": "app.js",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "mysql2": "^1.5.1",
-    "pug": "^2.0.0-rc.4",
-    "sequelize": "^4.32.2"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "test this"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Cam-F/Simply.git"
+    "url": "git+https://github.com/jpdevspace/Node-Express-Sequelize-EventPlanning.git"
   },
   "keywords": [
     "node",
     "express",
-    "pug",
+    "mysql",
+    "sequelize",
     "event",
-    "planning",
-    "mysql"
+    "planning"
   ],
-  "author": "Panda",
+  "author": "Jean Paul, Harmin, Cameron and Madison",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Cam-F/Simply/issues"
+    "url": "https://github.com/jpdevspace/Node-Express-Sequelize-EventPlanning/issues"
   },
-  "homepage": "https://github.com/Cam-F/Simply#readme"
+  "homepage": "https://github.com/jpdevspace/Node-Express-Sequelize-EventPlanning#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "method-override": "^2.3.10",
+    "mysql2": "^1.5.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pug": "^2.0.0-rc.4",
+    "sequelize": "^4.32.2"
+  }
 }
