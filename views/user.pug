@@ -26,17 +26,7 @@ block content
                             div.icon-text
                                 span.event-city #{user.city}, #{user.state}
             .event-info.col-lg-9
-                h3 Items to Bring
-                hr
-                body
-                    form.form-inline(method='PUT', action='/user')
-                        div.form-group
-                            label(for='name')
-                            input#name.form-control(type='text', placeholder='(input item)' name='name')
-                            | &nbsp;&nbsp;
-                            button.btn.btn-primary(type='submit') Add Item!
-                br
-                h3 Guests
+                h3 Table
                 table.table.table-striped
                     thead
                         tr 
