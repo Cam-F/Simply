@@ -39,7 +39,7 @@ router.get('/events', (req, res) => {
         }
     ]
 
-    res.render("events2", { user });
+    res.render("events", { user });
 
 });
 
@@ -157,5 +157,10 @@ router.post('/joinEvents', (req, res, next) => {
 router.get('/user', (req, res) => {
     res.render("user"); // Pass all data needed
 });
+
+//PUT update items button
+router.put('/user', (req, res) => {
+    console.log()
+})
 
 module.exports = router;
