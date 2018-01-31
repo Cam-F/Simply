@@ -165,4 +165,12 @@ router.get('/user', (req, res) => {
     });
 });
 
+router.put('/user/item', (req, res) => {
+    // console.log(req.body);
+    const user = {
+        item: req.body
+    };
+    console.log(user);
+});
+
 module.exports = router;
