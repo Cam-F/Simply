@@ -29,7 +29,8 @@ block content
                 h3 Items to Bring
                 hr
                 body
-                    form.form-inline(method='PUT', action='/user')
+                    form.form-inline(method='POST', action='/user/item' enctype="application/x-www-form-urlencoded")
+                        input(type="hidden" name="_method" value="PUT")
                         .form-group
                             label(for='name')
                             input#name.form-control(type='text', placeholder='(input item)' name='name')
