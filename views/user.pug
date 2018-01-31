@@ -12,25 +12,19 @@ block content
                             div.icon
                                 i.fa.fa-address-card-o.fa-2x(aria-hidden="true")
                             div.icon-text
-                                span.event-name Event Type || Event Name
+                                span.event-name #{user.name}
                     li
                         a.d-flex.justify-space-between
                             div.icon
                                 i.fa.fa-calendar.fa-2x(aria-hidden="true")
                             div.icon-text
-                                span.event-date 06/19/2018
+                                span.event-date #{user.date}
                     li
                         a.d-flex.justify-space-between
                             div.icon
                                 i.fa.fa-map-marker.fa-2x(aria-hidden="true")
                             div.icon-text
-                                span.event-city Orlando, FL
-                    li
-                        a.d-flex.justify-space-between
-                            div.icon
-                                i.fa.fa-phone.fa-2x(aria-hidden="true")
-                            div.icon-text
-                                span.event-phone 786.712.8327
+                                span.event-city #{user.city}, #{user.state}
             .event-info.col-lg-9
                 h3 Items to Bring
                 hr
@@ -45,24 +39,11 @@ block content
                 h3 Guests
                 table.table.table-striped
                     thead
-                        tr
-                            th(scope='col') #
-                            th(scope='col') First
-                            th(scope='col') Last
-                            th(scope='col') Handle
+                        tr 
+                            th Username
+                            th Item
                     tbody
+                    each val in user
                         tr
-                            th(scope='row') 1
-                            td Mark
-                            td Otto
-                            td @mdo
-                        tr
-                            th(scope='row') 2
-                            td Jacob
-                            td Thornton
-                            td @fat
-                        tr
-                            th(scope='row') 3
-                            td Larry
-                            td the Bird
-                            td @twitter
+                            td #{val.username}
+                            td #{val.item}
