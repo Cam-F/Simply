@@ -15,11 +15,47 @@ router.get('/', (req, res) => {
 
 // GET "/events": Display all events available
 router.get('/events', (req, res) => {
+<<<<<<< HEAD
+    const user = [
+        {
+            id: 123,
+            name: "Jean Paul",
+            type: "BBQ",
+            city: "Orlando",
+            state: "FL"
+        },
+        {
+            id: 456,
+            name: "Madison",
+            type: "BBQ",
+            city: "Orlando",
+            state: "FL"
+        },
+        {
+            id: 789,
+            name: "Harmin",
+            type: "Wedding",
+            city: "Sanford",
+            state: "FL"
+        },
+        {
+            id: 645,
+            name: "Cameron",
+            type: "Birthday",
+            city: "Melbourne",
+            state: "FL"
+        }
+    ]
+
+    res.render("events", { user });
+
+=======
     // Look for all events in the database
     models.Events.findAll()
         .then( (dataDB) => {
             res.render('events2', { dataDB });
         });
+>>>>>>> master
 });
 
 // POST "/signup": User signs up
@@ -164,5 +200,10 @@ router.get('/user', (req, res) => {
         res.render('user', { user: guests });
     });
 });
+
+//PUT update items button
+router.put('/user', (req, res) => {
+    console.log()
+})
 
 module.exports = router;
