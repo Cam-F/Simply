@@ -40,7 +40,6 @@
                 // Remove previous section if there's one
                 $('.open').removeClass('open');
             }
-            
         }
 
         simply.init();

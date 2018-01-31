@@ -1,46 +1,25 @@
-// Require Modules
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
+require('../config/passport')(passport);
+
+// Requiring Model
+const models = require('../models');
+
 
 // GET "/": Display homepage
 router.get('/', (req, res) => {
-    res.render("index");
+    res.render('index');
 });
 
+// GET "/events": Display all events available
 router.get('/events', (req, res) => {
-    const user = [
-        {
-            id: 123,
-            name: "Jean Paul",
-            type: "BBQ",
-            city: "Orlando",
-            state: "FL"
-        },
-        {
-            id: 456,
-            name: "Madison",
-            type: "BBQ",
-            city: "Orlando",
-            state: "FL"
-        },
-        {
-            id: 789,
-            name: "Harmin",
-            type: "Wedding",
-            city: "Sanford",
-            state: "FL"
-        },
-        {
-            id: 645,
-            name: "Cameron",
-            type: "Birthday",
-            city: "Melbourne",
-            state: "FL"
-        }
-    ]
-
-    res.render("events2", { user });
-
+    // Look for all events in the database
+    models.Events.findAll()
+        .then( (dataDB) => {
+            res.render('events2', { dataDB });
+        });
 });
 
 // POST "/signup": User signs up
@@ -56,18 +35,17 @@ router.post('/register', (req, res, next) => {
                 err.status = 400;
                 next(err);
             } 
-            // If passwords match match
-            const newUser = {
-                username: req.body.username,
-                email: req.body.email,
-                password: req.body.password 
-            };
             
             // CREATE USER IN DB
-            // CODE!!!!
+            models.Events.create({
+                username: req.body.username,
+                email: req.body.email,
+                password: req.body.password,
+            }).then( (dataDB) => {
                 // store user's ID from DB into the sesssion (so user is immediately logged in)
-                req.session.userId = user._id;
+                //req.session.userId = user._id;
                 res.redirect('/user');
+            });
     }
     else {
         // If a field is blank
@@ -84,18 +62,21 @@ router.post('/login', (req, res, next) => {
         // If both fields are filled out
         // Authenticate on database PENDING!!!!!
             // CODE TO AUTHENTICATE ON DB
-
-            // If there's an error or the user doesn't exist
-            if (error || !user) {
-                const err = new Error('Wrong email or password');
-                err.status = 401;
-                next(err);
-            }
-            else {
-                // store user's ID from DB into the sesssion
-                req.session.userId = user._id;
-                res.redirect('/user');
-            }
+            passport.authenticate('local', { 
+                successRedirect: '/user',
+                failureRedirect: '/' 
+            })(req, res, next);
+            // // If there's an error or the user doesn't exist
+            // if (error || !user) {
+            //     const err = new Error('Wrong email or password');
+            //     err.status = 401;
+            //     next(err);
+            // }
+            // else {
+            //     // store user's ID from DB into the sesssion
+            //     req.session.userId = user._id;
+            //     res.redirect('/user');
+            // }
     }
     else {
         // If a field is blank
@@ -105,21 +86,35 @@ router.post('/login', (req, res, next) => {
     }
 });
 
-// POST "/createEvents": Creating events
-router.post('/createEvents', (req, res, next) => {
-    // All fields 
+// PUT "/createEvents": Creating events
+router.put('/createEvents', (req, res, next) => {
+    
+    // Check that all fields have been filled by user
     if (req.body.newEventName &&
         req.body.newEventType &&
+        req.body.newEventCode &&
+        req.body.newEventDate &&
+        req.body.newEventCity &&
+        req.body.newEventState &&
         req.body.newEventCode) {
-
-            const newEvent = {
+        
+        // Update the records using this new data
+        models.Events.update(
+            {   
                 name: req.body.newEventName,
                 type: req.body.newEventType,
-                code: req.body.newEventType
+                date: req.body.newEventDate,
+                city: req.body.newEventCity,
+                state: req.body.newEventState,
+                code: req.body.newEventCode
+            },
+            {
+                where: { username: 'jpgiraldo' }    // Only update this user
             }
-
-            // Store it in DB
-                // CODE!!!!!
+        )
+        .then( (rowsUpdated) => {
+            console.log(rowsUpdated);
+        });
     }
     else {
         // If a field is blank
@@ -155,7 +150,19 @@ router.post('/joinEvents', (req, res, next) => {
 
 // GET "/user": Dashboard
 router.get('/user', (req, res) => {
-    res.render("user"); // Pass all data needed
+    // Look for all events in the database with a specific code
+    models.Events.findAll({
+        where: {
+            code: '111'
+        }
+    })
+    .then( (dataDB) => {
+        let guests = [];
+        dataDB.forEach( guest => {
+            guests.push(guest.dataValues);
+        })
+        res.render('user', { user: guests });
+    });
 });
 
 module.exports = router;
