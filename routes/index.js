@@ -41,9 +41,10 @@ router.post('/register', (req, res, next) => {
                 username: req.body.username,
                 email: req.body.email,
                 password: req.body.password,
-            }).then( (dataDB) => {
-                // store user's ID from DB into the sesssion (so user is immediately logged in)
-                //req.session.userId = user._id;
+            }).then( user => {
+                req.session.userId = user.username;
+                req.session.authenticated = true;
+                console.log(req.session);
                 res.redirect('/user');
             });
     }
@@ -53,50 +54,29 @@ router.post('/register', (req, res, next) => {
         err.status = 400;
         next(err);
     }
-
 });
 
 // POST "/login": User logs in
-router.post('/login', (req, res, next) => {
-    if (req.body.email && req.body.password) {
-        // If both fields are filled out
-        // Authenticate on database PENDING!!!!!
-            // CODE TO AUTHENTICATE ON DB
-            passport.authenticate('local', { 
-                successRedirect: '/user',
-                failureRedirect: '/' 
-            })(req, res, next);
-            // // If there's an error or the user doesn't exist
-            // if (error || !user) {
-            //     const err = new Error('Wrong email or password');
-            //     err.status = 401;
-            //     next(err);
-            // }
-            // else {
-            //     // store user's ID from DB into the sesssion
-            //     req.session.userId = user._id;
-            //     res.redirect('/user');
-            // }
+router.post('/login', 
+    passport.authenticate('local-signin',  
+    { 
+        successRedirect: '/user',
+        failureRedirect: '/'
     }
-    else {
-        // If a field is blank
-        let err = new Error("All fields are required");
-        err.status = 400;
-        next(err);
-    }
-});
+));
+
 
 // PUT "/createEvents": Creating events
 router.put('/createEvents', (req, res, next) => {
-    
+    //res.send(req.body);
     // Check that all fields have been filled by user
     if (req.body.newEventName &&
         req.body.newEventType &&
-        req.body.newEventCode &&
         req.body.newEventDate &&
         req.body.newEventCity &&
         req.body.newEventState &&
         req.body.newEventCode) {
+            
         
         // Update the records using this new data
         models.Events.update(
@@ -109,11 +89,12 @@ router.put('/createEvents', (req, res, next) => {
                 code: req.body.newEventCode
             },
             {
-                where: { username: 'jpgiraldo' }    // Only update this user
+                where: { username: req.session.userId }    // Only update this user
             }
         )
-        .then( (rowsUpdated) => {
-            console.log(rowsUpdated);
+        .then( data => {
+            req.session.eventCreated = req.body.newEventCode;
+            res.redirect('/user');
         });
     }
     else {
@@ -125,52 +106,60 @@ router.put('/createEvents', (req, res, next) => {
 });
 
 // POST "/joinEvents": Joining existing events
-router.post('/joinEvents', (req, res, next) => {
-    if (req.body.newEventName) {
-        // look for the event in the db
-            // If event not found
-            if (!event) {
-                // If a field is blank
-                let err = new Error("All fields are required");
-                err.status = 400;
-                next(err);
-            } 
-            else {
-                res.redirect('/user')
-            }
-        
-    }
-    else {
-        // If a field is blank
-        let err = new Error("All fields are required");
-        err.status = 400;
-        next(err);
-    }
+router.put('/joinEvent', (req, res) => {
+    models.Events.findOne({ where: { code: req.body.newEventCode} })
+        .then( event => {
+            console.log(event.dataValues);
+
+            models.Events.update({ 
+                name: event.dataValues.name,
+                type: event.dataValues.type,
+                date: event.dataValues.date,
+                city: event.dataValues.city,
+                state: event.dataValues.state, 
+                code: req.body.newEventCode
+            },
+                {
+                    where: { username: req.session.userId }    // Only update this user
+                }
+            )
+            .then( data => res.redirect('/user') );
+        });
 });
 
+
 // GET "/user": Dashboard
-router.get('/user', (req, res) => {
-    // Look for all events in the database with a specific code
-    models.Events.findAll({
-        where: {
-            code: '111'
-        }
-    })
-    .then( (dataDB) => {
-        let guests = [];
-        dataDB.forEach( guest => {
-            guests.push(guest.dataValues);
-        })
-        res.render('user', { user: guests });
+router.get('/user', (req, res, next) => {
+    models.Events.findOne({ where: { username: req.session.userId } })
+        .then( events => {
+            if (events.dataValues.code !== 0) {
+                models.Events.findAll({ where: { code: events.dataValues.code } })
+                    .then( allEvents => {
+
+                        res.render('user', { events: events.dataValues, allEvents: allEvents });
+                    });
+            }
+            else {
+                res.render('user', { events: events.dataValues });
+            }
     });
 });
 
-router.put('/user/item', (req, res) => {
-    // console.log(req.body);
-    const user = {
-        item: req.body
-    };
-    console.log(user);
+router.put('/newItem', (req, res) => {
+    // Update the records using this new data
+    models.Events.update({ items: req.body.newItem },
+        {
+            where: { username: req.session.userId }    // Only update this user
+        }
+    )
+    .then( data => res.redirect('/user') );
+});
+
+
+// logout
+router.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
 });
 
 module.exports = router;

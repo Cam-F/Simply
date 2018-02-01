@@ -35,16 +35,13 @@ module.exports = (sequelize, DataTypes) => {
 
   {
     hooks: {
-      afterValidate: (event) => {
+      beforeCreate: (event) => {
         event.password = bcrypt.hashSync(event.password, 10);
       }
     }
   }
 );
 
-// Events.validPassword = (password, passwd, done, event) => {
-//   bcrypt.compareSync(password, passwd);
-// };
 
   return Events;
 };

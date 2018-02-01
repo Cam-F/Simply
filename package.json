@@ -4,7 +4,8 @@
   "description": "Event Planning Full Stack Web App",
   "main": "app.js",
   "scripts": {
-    "test": "test this"
+    "test": "test this",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,9 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "method-override": "^2.3.10",
+    "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",

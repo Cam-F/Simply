@@ -1,23 +1,14 @@
 * {
-  font-family:  'Nunito', sans-serif;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
   *:focus, *:active {
     outline: none !important; }
 
-.navbar-brand {
-  font-family:  'Nunito', sans-serif;
-  font-size: 1.5em;
-}
 .main {
-  margin: 6em auto 0 auto;
-  width: 90%;
-  height: 30em;
-  padding: 1em 4em 1em; 
-  background: url('../imgs/events.gif') center no-repeat;
-  background-size: contain;
-}
-
+  margin: 4em auto 0 auto;
+  width: 70%;
+  height: auto;
+  padding: 1em 4em 1em; }
   .main input {
     border: 3px solid #cecece;
     border-radius: 25px;
@@ -57,7 +48,7 @@
   display: block !important; }
 
 .container-fluid {
-  margin-top: 4.2em; }
+  margin-top: 3.5em; }
 
 .sidebar {
   padding: 0;

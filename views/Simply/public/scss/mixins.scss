@@ -1,0 +1,30 @@
+@mixin overlay-items {
+    background-color: #FFF;
+    padding: 3em 7em;
+    margin: 0 auto;
+    width: 50%;
+    z-index: 2;
+}
+
+@mixin md {
+    @media (max-width: $screen-md) {
+        .overlay {
+            .signup,
+            .login,
+            .createEvent, 
+            .joinEvent {
+                width: 100%;
+                padding: 3em 2em;
+            }
+        }
+    }
+}
+
+@mixin lg {
+    @media(min-width: $screen-lg) {
+        .sidebar {
+            height: 100vh;
+        }
+    }
+}
+

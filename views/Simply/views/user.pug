@@ -1,0 +1,58 @@
+extends layout
+
+block content
+    .container-fluid
+        .row
+            .sidebar.col-lg-3
+                .profile-img
+                h3.text-center Hi Jean Paul
+                ul
+                    li
+                        a.d-flex.justify-space-between
+                            div.icon
+                                i.fa.fa-address-card-o.fa-2x(aria-hidden="true")
+                            div.icon-text
+                                span.event-name Event Type || Event Name
+                    li
+                        a.d-flex.justify-space-between
+                            div.icon
+                                i.fa.fa-calendar.fa-2x(aria-hidden="true")
+                            div.icon-text
+                                span.event-date 06/19/2018
+                    li
+                        a.d-flex.justify-space-between
+                            div.icon
+                                i.fa.fa-map-marker.fa-2x(aria-hidden="true")
+                            div.icon-text
+                                span.event-city Orlando, FL
+                    li
+                        a.d-flex.justify-space-between
+                            div.icon
+                                i.fa.fa-phone.fa-2x(aria-hidden="true")
+                            div.icon-text
+                                span.event-phone 786.712.8327
+            .event-info.col-lg-9
+                h3 Table
+                table.table.table-striped
+                    thead
+                        tr
+                            th(scope='col') #
+                            th(scope='col') First
+                            th(scope='col') Last
+                            th(scope='col') Handle
+                    tbody
+                        tr
+                            th(scope='row') 1
+                            td Mark
+                            td Otto
+                            td @mdo
+                        tr
+                            th(scope='row') 2
+                            td Jacob
+                            td Thornton
+                            td @fat
+                        tr
+                            th(scope='row') 3
+                            td Larry
+                            td the Bird
+                            td @twitter

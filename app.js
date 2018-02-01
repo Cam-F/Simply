@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mainRoutes = require('./routes');
 const passport = require('passport');
 const models = require('./models');
+const session = require('express-session');
 require('./config/passport')(passport);
 
 
@@ -33,6 +34,19 @@ app.set('view engine', 'pug');
 // Middleware: Passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Middleware: Express-Sessions
+app.use(session({
+  secret: 'simplyapp',
+  resave: true,
+  saveUninitialized: true,
+}));
+
+// Make user ID available in templates
+app.use((req, res, next) => {
+    res.locals.currentUser = req.session.userId;
+    next();
+});
 
 // Handling Routes
 app.use("/", mainRoutes);
