@@ -5,46 +5,57 @@ block content
         .row
             .sidebar.col-lg-3
                 .profile-img
-                h3.text-center Hi Jean Paul
+                h3.text-center Hi #{events.username},
                 ul
                     li
                         a.d-flex.justify-space-between
                             div.icon
                                 i.fa.fa-address-card-o.fa-2x(aria-hidden="true")
                             div.icon-text
-                                span.event-name #{user.name}
+                                if events.name
+                                    span.event-name #{events.name}
+                                else 
+                                    span.event-name No events yet
                     li
                         a.d-flex.justify-space-between
                             div.icon
                                 i.fa.fa-calendar.fa-2x(aria-hidden="true")
                             div.icon-text
-                                span.event-date #{user.date}
+                                if events.name
+                                    span.event-date #{events.date}
+                                else 
+                                    span.event-date No events yet
                     li
                         a.d-flex.justify-space-between
                             div.icon
                                 i.fa.fa-map-marker.fa-2x(aria-hidden="true")
                             div.icon-text
-                                span.event-city #{user.city}, #{user.state}
+                                if events.name
+                                    span.event-city #{events.city}, #{events.state}
+                                else 
+                                    span.event-city No events yet
             .event-info.col-lg-9
-                h3 Items to Bring
-                hr
-                body
-                    form.form-inline(method='POST', action='/user/item' enctype="application/x-www-form-urlencoded")
+                if allEvents
+                    h3.text-center List of all guests
+                    br
+                    form(action="/newItem" method="POST" enctype="application/x-www-form-urlencoded")
                         input(type="hidden" name="_method" value="PUT")
-                        .form-group
-                            label(for='name')
-                            input#name.form-control(type='text', placeholder='(input item)' name='name')
-                            | &nbsp;&nbsp;
-                            button.btn.btn-primary(type='submit') Add item!
-                br
-                h3 Guests
-                table.table.table-striped
-                    thead
-                        tr 
-                            th Username
-                            th Item
-                    tbody
-                    each val in user
-                        tr
-                            td #{val.username}
-                            td #{val.item}
+                        .form-groupt
+                            .d-flex.justify-content-around
+                                input.form-control.col-10(type="text", placeholder="What item are you bringing?", name="newItem")
+                                button.btn.btn-info(type="submit") Submit
+                    br
+                    table.table.table-striped
+                        thead
+                            tr 
+                                th Username
+                                th Item
+                        tbody
+                        
+                        each val in allEvents
+                            tr
+                                td #{val.username}
+                                td #{val.items}
+                else 
+                    br
+                    h3.text-center Such empty... Create an event to begin

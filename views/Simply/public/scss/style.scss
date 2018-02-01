@@ -1,0 +1,108 @@
+@import "variables";
+@import "mixins";
+*{
+    box-sizing: border-box;
+    
+    &:focus,
+    &:active {
+        outline: none !important;
+    }
+}
+.main {
+    margin: 4em auto 0 auto;
+    width: 70%;
+    height: auto;
+    padding: 1em 4em 1em;
+
+    input {
+        border: 3px solid #cecece;
+        border-radius: 25px;
+        padding: 0.6em;
+    }
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    text-align: center;
+    padding-top: 10em;
+    transition: all 0.3s linear;
+
+
+        h2 {
+            color: $aqua;
+        }
+        input {
+            border: 5px solid $gray;
+        }
+        .open{
+            display: block;
+        }
+        .signup,
+        .login,
+        .createEvent, 
+        .joinEvent {
+            @include overlay-items;
+            display: none;
+        }
+
+}
+
+.open{
+    display: block !important;
+}
+
+.container-fluid {
+    margin-top: 3.5em;
+}
+.sidebar {
+    padding: 0;
+    margin: 0;
+    box-shadow: 3px 3px 10px 2px rgba(0, 0, 0, 0.4);
+    background-color: $purple;
+    color: #FFF;
+
+    .profile-img {
+        width: 8em;
+        height: 8em;
+        border-radius: 50%;
+        padding: 0;
+        background: url("../imgs/user.png") center no-repeat;
+        background-size: contain;
+        border: 1px solid #FFF;
+        margin: 2em auto;
+    }
+
+    ul {
+        list-style: none;
+
+        .icon {
+            width: 40px;
+        }
+
+        li {
+            padding: 0.5em 0;
+        }
+    }
+
+    
+
+
+}
+
+
+
+// Media Queries
+@include md;
+@include lg 
+
+
+
+
+
+

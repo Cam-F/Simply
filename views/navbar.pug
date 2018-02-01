@@ -6,15 +6,22 @@ nav.navbar.navbar-expand-md.navbar-light.fixed-top.bg-light.d-flex.justify-conte
         div
             #navbarCollapse.collapse.navbar-collapse.text-right
                 ul.navbar-nav.mr-auto
-                    li.nav-item
-                        a#nav-register.nav-link(href="#" data-section="signup") Register
-                    li.nav-item
-                        a#nav-signin.nav-link(href="#" data-section="login") Sign in
-                    li.nav-item
-                        a#nav-viewData.nav-link(href='/events') View Data
-                    li.nav-item
-                        a#nav-createEvent.nav-link(href="#" data-section="createEvent") Create Event
-                    li.nav-item
-                        a#nav-joinEvent.nav-link(href="#" data-section="joinEvent") Join Event
-                    li.nav-item
-                        a.nav-link(href='/user') Dashboard
+                    if !currentUser
+                        li.nav-item
+                            a#nav-register.nav-link(href="#" data-section="signup") Register
+                        li.nav-item
+                            a#nav-signin.nav-link(href="#" data-section="login") Sign in
+                        li.nav-item
+                            a#nav-viewData.nav-link(href='/events') View Data
+                    else
+                        li.nav-item
+                            a#nav-dashboard.nav-link(href="/user") Dashboard
+                        li.nav-item
+                            a#nav-createEvent.nav-link(href="#" data-section="createEvent") Create Event
+                        li.nav-item
+                            a#nav-joinEvent.nav-link(href="#" data-section="joinEvent") Join Event
+                        li.nav-item
+                            a.nav-link(href='/logout') Logout
+
+
+
